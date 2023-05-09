@@ -1,80 +1,74 @@
-import axios from "axios";
+// import axios from "axios";
 import { useContext } from "react";
 // import { Send } from "react-feather";
-import { toast } from "react-hot-toast";
-import { z } from "zod";
+// import { toast } from "react-hot-toast";
+// import { z } from "zod";
 import { AuthContext } from "../context/AuthProvider";
-import { WEB_URL } from "../lib/CONSTANTS";
+// import { WEB_URL } from "../lib/CONSTANTS";
+import React, {useState} from 'react'
+import { useNavigate } from "react-router-dom";
 
 
 const SearchBar = () => {
+
+
+
   const { user } = useContext(AuthContext);
 
-  const CreateSearch = async () => {
-    const body = {
-      user_uid: user.uid,
-      
-    };
-    const headers = {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    };
-    const searchPromise = axios.post(WEB_URL + "/api/city", body, headers);
+  const [searchInput, setSearchInput] = useState("");
 
-    toast
-      .promise(searchPromise, {
-        loading: "Searching.....",
-        error: "Search Failed....",
-      })
-      .then((res) => {
-        window.location("/results"); 
-        // Not sure if this is the right way to route 
-      })
-      .catch((err) => console.log(err));
-  };
+  const cities = [
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    CreateSearch();
-  };
-
+    { name: "Chicago"},
+    { name: "Paris"},
+    { name: "New York"},
+    { name: "Berlin"},
+    { name: "San Francisco"},
+    { name: "Amsterdam"},
+    { name: "Milan"},
+    { name: "London"},
+    { name: "Austin"},
+    { name: "Dallas"},
+    { name: "Portland"},
+    { name: "Seattle" },
+    { name: "Los Angeles"},
+    { name: "Miami"},
+    { name: "San Antonio"},
+    { name: "Washington DC"},
+    { name: "San Jose" },
+    { name: "San Diego" },
+    { name: "Munich"},
+    { name: "Cape Town"},
+    { name: "Waco" },
+    { name: "Lubbock"},
+    { name: "Paris" },
+    { name: "Dublin" },
+  
+  ];
   const handleChange = (e) => {
-    const validator = z.string().max(100);
-    const current = e.target.value;
-    console.log(current);
-    try {
-      validator.parse(current);
-    } catch (err) {
-      if (current.length > 100) {
-        toast.error("City does not exits!", {
-          duration: 2000,
-        });
-      }
-    }
+    e.preventDefault();
+    setSearchInput(e.target.value);
   };
-
+  
+  if (searchInput.length > 0) {
+      cities.filter((city) => {
+      return city.name.match(searchInput);
+  });
+  }
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path ='/results'; 
+    navigate(path);
+  }
   if (!user.loggedIn) return;
 
   return (
-    <div class="mb-1">
-      <form
-        className="form-control max-w-lg mx-auto flex-row"
-        onSubmit={handleSubmit}
-      >
-        <div className="input-group">
-        <input type="text" placeholder="Enter City Here!" className="input input-bordered input-secondary w-full max-w-xs"
-            onChange={handleChange}
-            />
-
-{/* Search Button */}
-            <div className="btn-group">
-            <button
-            className="btn btn-active text-white ml-1">Search</button>
-          </div>
-
-        </div>
-      </form>
-      </div>
+  <div>
+          <input type="text" placeholder="Enter City Here!" className="input input-bordered input-secondary max-w-xs"
+              onChange={handleChange} value={searchInput}
+              /> <button className="btn btn-active text-white ml-1" onClick={routeChange}>Search</button>
+            
+</div>
 
   );
 };
