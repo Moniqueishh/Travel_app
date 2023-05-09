@@ -4,8 +4,10 @@ const DataProvider = props => {
     // declare state variables here
     // we can then set up as a global context accessible by all children
     const [trip, setTrip] = useState({city: {}});
+
+    const value = {trip, setTrip}
     return(
-        <DataContext.Provider value={{'trip': trip, 'setTrip': setTrip}}>
+        <DataContext.Provider value={value}>
             {props.children}
         </DataContext.Provider>
     )

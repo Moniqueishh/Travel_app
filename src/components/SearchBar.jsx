@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { DataContext } from "../context/DataProvider";
 
 
 
-  export const SearchBar = ({ setResults }) => {
+    const SearchBar = () => {
     const [input, setInput] = useState('');
+    const {trip, setTrip} = useContext(DataContext)
   
 let url=`https://api.openweathermap.org/data/2.5/weather?units=imperial&q=${input}&appid=dc3ef453ab3d9fcae3c05cb7809a765b`
 
@@ -28,7 +30,7 @@ let url=`https://api.openweathermap.org/data/2.5/weather?units=imperial&q=${inpu
     //   }
     // }
               
-            setResults(results);
+            // setResults(results);
             
           });
           
@@ -42,6 +44,7 @@ let url=`https://api.openweathermap.org/data/2.5/weather?units=imperial&q=${inpu
     let navigate = useNavigate(); 
     const routeChange = () =>{ 
       let path ='/results'; 
+      setTrip(input)
       navigate(path);
     }
   
