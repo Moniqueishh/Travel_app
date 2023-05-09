@@ -1,6 +1,9 @@
 import { useContext } from "react";
 // import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
+import SearchBar from "./SearchBar";
+// import { DataContext } from "../context/DataProvider";
+// import { get, child, ref } from "firebase/database";
 
 const Avatar = ({ user, logout }) => {
   return (
@@ -40,14 +43,14 @@ const Nav = () => {
 
 
       </div>
-      <div className="flex-none gap-2">
-        <div className="form-control">
-          <input
-            type="text"
-            placeholder="Search"
-            className="input input-bordered"
-          />
+      <div className="flex-none gap-2 mr-4">
+
+        {/* SEARCH BAR */}
+        <SearchBar />
+          
         </div>
+
+
 
         {user.loggedIn ? (
           <Avatar user={user} logout={logout} />
@@ -58,7 +61,7 @@ const Nav = () => {
           
         )}
       </div>
-    </div>
+
   );
 };
 

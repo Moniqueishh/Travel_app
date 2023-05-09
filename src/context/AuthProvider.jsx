@@ -22,11 +22,10 @@ export const AuthProvider = ({ children }) => {
       img: user.photoURL,
       email : user.email,
       password: user.password
-    //   username = request.json.get('username')
-    //   name = request.json.get('displayName')
-    //   img = request.json.get('photoURL')
-    //   email = request.json.get('email')
-    //   password = request.json.get('password')
+      // self.username = username
+      // self.email = email
+      // self.password = generate_password_hash(password)
+      // self.img = img
     };
 
     const headers = {

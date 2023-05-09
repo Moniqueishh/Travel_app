@@ -4,8 +4,11 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { AuthProvider } from "./context/AuthProvider";
 import { app } from "./firebase";
+// import ProviderLayer from './ProviderLayer';
+// import { FirebaseAppProvider } from 'reactfire';
 
 const UseApp = app;
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,3 +20,14 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
+
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <React.StrictMode>
+//     <BrowserRouter>
+//       <FirebaseAppProvider>
+//         <ProviderLayer />
+//       </FirebaseAppProvider>
+//     </BrowserRouter>
+//   </React.StrictMode>
+// );
