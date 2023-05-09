@@ -2,6 +2,7 @@ import { useContext } from "react";
 // import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 import SearchBar from "./SearchBar";
+import Register from "../views/Register";
 // import { DataContext } from "../context/DataProvider";
 // import { get, child, ref } from "firebase/database";
 
@@ -55,10 +56,11 @@ const Nav = () => {
         {user.loggedIn ? (
           <Avatar user={user} logout={logout} />
         ) : (
-          <button className="btn btn-primary" onClick={login}>
-            Sign in
-          </button>
-          
+          <>
+          <button className="btn btn-primary mr-2" onClick={Register}>Register</button>
+          <button className="btn btn-primary" onClick={login}>Sign in</button>
+
+                  </>
         )}
       </div>
 

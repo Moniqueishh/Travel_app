@@ -24,11 +24,11 @@ const SearchBar = () => {
     toast
       .promise(searchPromise, {
         loading: "Searching.....",
-        // success was here 
         error: "Search Failed....",
       })
       .then((res) => {
-        window.location.reload();
+        window.location("/results"); 
+        // Not sure if this is the right way to route 
       })
       .catch((err) => console.log(err));
   };
@@ -39,13 +39,13 @@ const SearchBar = () => {
   };
 
   const handleChange = (e) => {
-    const validator = z.string().max(255);
+    const validator = z.string().max(100);
     const current = e.target.value;
     console.log(current);
     try {
       validator.parse(current);
     } catch (err) {
-      if (current.length > 255) {
+      if (current.length > 100) {
         toast.error("City does not exits!", {
           duration: 2000,
         });
