@@ -10,6 +10,7 @@ const Avatar = ({ user, logout }) => {
   return (
     <div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+        
      
       <div class="w-24 mask mask-hexagon">
           <img src={user.photoURL} alt={user.displayName} />

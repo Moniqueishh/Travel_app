@@ -1,76 +1,58 @@
-// import axios from "axios";
-import { useContext } from "react";
-// import { Send } from "react-feather";
-// import { toast } from "react-hot-toast";
-// import { z } from "zod";
-import { AuthContext } from "../context/AuthProvider";
-// import { WEB_URL } from "../lib/CONSTANTS";
-import React, {useState} from 'react'
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-
-const SearchBar = () => {
+import axios from "axios";
 
 
 
-  const { user } = useContext(AuthContext);
-
-  const [searchInput, setSearchInput] = useState("");
-
-  const cities = [
-
-    { name: "Chicago"},
-    { name: "Paris"},
-    { name: "New York"},
-    { name: "Berlin"},
-    { name: "San Francisco"},
-    { name: "Amsterdam"},
-    { name: "Milan"},
-    { name: "London"},
-    { name: "Austin"},
-    { name: "Dallas"},
-    { name: "Portland"},
-    { name: "Seattle" },
-    { name: "Los Angeles"},
-    { name: "Miami"},
-    { name: "San Antonio"},
-    { name: "Washington DC"},
-    { name: "San Jose" },
-    { name: "San Diego" },
-    { name: "Munich"},
-    { name: "Cape Town"},
-    { name: "Waco" },
-    { name: "Lubbock"},
-    { name: "Paris" },
-    { name: "Dublin" },
+  export const SearchBar = ({ setResults }) => {
+    const [input, setInput] = useState('');
   
-  ];
-  const handleChange = (e) => {
-    e.preventDefault();
-    setSearchInput(e.target.value);
-  };
-  
-  if (searchInput.length > 0) {
-      cities.filter((city) => {
-      return city.name.match(searchInput);
-  });
-  }
-  let navigate = useNavigate(); 
-  const routeChange = () =>{ 
-    let path ='/results'; 
-    navigate(path);
-  }
-  if (!user.loggedIn) return;
+let url=`https://api.openweathermap.org/data/2.5/weather?units=imperial&q=${input}&appid=dc3ef453ab3d9fcae3c05cb7809a765b`
 
-  return (
-  <div>
-          <input type="text" placeholder="Enter City Here!" className="input input-bordered input-secondary max-w-xs"
-              onChange={handleChange} value={searchInput}
-              /> <button className="btn btn-active text-white ml-1" onClick={routeChange}>Search</button>
+    const fetchData = (value) => {
+          fetch(url).then((response) => response.json())
+          .then((json) => {
+            console.log(json)
+            const values = Object.values(json);
+            const results = values.filter((city) => {
+              return value && city && city.name && city.name.toLowercase().includes(value)
+
+              // return console.log(results) 
+            })
+
+    // const getInputData = (event) => {
+    //   if (event.key === 'Enter') {
+    //     axios.get(url).then((response) =>{
+    //       setInput(response.data)
+    //     })
+    //   }
+    // }
+              
+            setResults(results);
             
-</div>
+          });
+          
+      };
+  
+    const handleChange = (value) => {
+      setInput(value);
+      fetchData(value);
+    };
 
-  );
-};
+    let navigate = useNavigate(); 
+    const routeChange = () =>{ 
+      let path ='/results'; 
+      navigate(path);
+    }
+  
+    return (
+      <div className="input-wrapper">
+        <input type="text" placeholder="Enter City Here!" className="input input-bordered input-secondary max-w-xs"
+          value={input}
+          onChange={(e) => handleChange(e.target.value)}/>
+          <button className="btn btn-active text-white ml-1" onClick={routeChange}>Search</button>
+      </div>
+    );
+  };
 
 export default SearchBar ;
