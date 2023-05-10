@@ -13,6 +13,7 @@ function App() {
         `https://api.openweathermap.org/data/2.5/weather?units=imperial&q=${city}&appid=dc3ef453ab3d9fcae3c05cb7809a765b`,
       );
       updateWeather(response.data);
+      console.log(response)
     };
     return (
         <>

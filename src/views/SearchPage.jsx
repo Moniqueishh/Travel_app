@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Axios from "axios";
 import CityComponent from "./CityComponent"
 import WeatherComponent from "./WeatherComponent"
+import YoutubeComponent from "./YoutubeComponent";
 // import { useNavigate } from "react-router-dom";
 
 
@@ -10,6 +11,8 @@ const SearchPage = (props) =>{
 
     const [city, updateCity] = useState();
     const [weather, updateWeather] = useState();
+    const [youtube, updateYoutube] = useState();
+
     const fetchWeather = async (e) => {
       e.preventDefault();
       const response = await Axios.get(
@@ -18,6 +21,17 @@ const SearchPage = (props) =>{
       updateWeather(response.data);
 
       }
+
+      const fetchYoutube = async (e) => {
+    e.preventDefault();
+      const response = Axios.get(
+        `https://v1.nocodeapi.com/moniquev432/yt/otgRdsmpvlWTGSCU
+        `,
+      );
+      updateYoutube(response.data);
+
+      }
+
     // let navigate = useNavigate(); 
     // const routeChange = () =>{ 
     //   let path ='/results'; 
@@ -77,15 +91,50 @@ const SearchPage = (props) =>{
   </div>
 </div>
 
-        <div onSubmit={fetchWeather} className ="mt-20 pb-2 search">
-            <form action="">
-            {city && weather ? (
+<div className="flex flex-col w-full lg:flex-row mb-32 mt-24">
+<div className="grid flex-grow h-32 card  rounded-box place-items-center">
+
+<div className="card w-96 bg-base-100 shadow-xl image-full ">
+<figure><img src="/" alt="" /></figure>
+<div className="card-body">
+    <h1>{city} Weather Details</h1>
+    <h2 className="card-title">
+    {city && weather ? (
           <WeatherComponent weather={weather} city={city} />
         ) : (
           <CityComponent updateCity={updateCity} fetchWeather={fetchWeather} />
         )}
-        </form>
-        </div>
+
+    </h2>
+    {/* <p>If a dog chews shoes whose shoes does he choose?</p> */}
+    <div className="card-actions justify-end">
+    </div>
+</div>
+</div>
+
+
+</div> 
+<div className="divider lg:divider-horizontal">OR</div> 
+<div className="grid flex-grow h-32 card  rounded-box place-items-center">
+
+{/* Beginning of second card  */}
+<div className="card w-96 bg-base-100 shadow-xl image-full">
+<figure><img src="/" alt="" /></figure>
+<div className="card-body">
+    <h2 className="card-title">
+    <YoutubeComponent updateCity={updateCity} fetchYoutube={fetchYoutube} />
+    
+    </h2>
+    {/* <p>If a dog chews shoes whose shoes does he choose?</p> */}
+    <div className="card-actions justify-end">
+
+    </div>
+</div>
+</div>
+{/* End of card */}
+
+</div>
+</div>
 </div>
 </div>
 </div>
