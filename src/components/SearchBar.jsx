@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import { DataContext } from "../context/DataProvider";
 
 
 
     const SearchBar = () => {
     const [input, setInput] = useState('');
-    const {trip, setTrip} = useContext(DataContext)
+    // const {trip, setTrip} = useContext(DataContext)
   
 let url=`https://api.openweathermap.org/data/2.5/weather?units=imperial&q=${input}&appid=dc3ef453ab3d9fcae3c05cb7809a765b`
 
@@ -43,17 +43,17 @@ let url=`https://api.openweathermap.org/data/2.5/weather?units=imperial&q=${inpu
 
     let navigate = useNavigate(); 
     const routeChange = () =>{ 
-      let path ='/results'; 
-      setTrip(input)
+      let path ='/searchpage'; 
+      // setTrip(input)
       navigate(path);
     }
   
     return (
       <div className="input-wrapper">
-        <input type="text" placeholder="Enter City Here!" className="input input-bordered input-secondary max-w-xs"
+        {/* <input type="text" placeholder="Enter City Here!" className="input input-bordered input-secondary max-w-xs"
           value={input}
-          onChange={(e) => handleChange(e.target.value)}/>
-          <button className="btn btn-active text-white ml-1" onClick={routeChange}>Search</button>
+          onChange={(e) => handleChange(e.target.value)}/> */}
+          <button className="btn btn-active text-white ml-1" onClick={routeChange}>Start your search</button>
       </div>
     );
   };

@@ -10,6 +10,7 @@ import SavedTrips from "./views/SavedTrips";
 import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import { useState } from "react";
+import SearchPage from "./views/SearchPage";
 
 
 
@@ -27,6 +28,7 @@ function App() {
         <Route children path='/register' element={<Register />} />
         <Route children path='/results' element={<SearchResults results={results}/>} />
         <Route children path='/savedtrips' element={<SavedTrips />} />
+        <Route children path='/searchpage' element={<SearchPage />} />
       </Routes>
       <Footer />
     </div>

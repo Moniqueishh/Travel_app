@@ -20,13 +20,15 @@ const SearchResults = ({results}) =>{
     
     {/* Actual card with info */}
 
-    <div className="card w-96 bg-secondary text-primary-content">
-        <div className="card-body">
+    <div className="card w-96 bg-secondary text-primary-content weather">
+        <div className="card-body content">
             <h2 className="card-title">Weather for {results}</h2>
             {/* <p>{results?.name} </p> */}
-            <p>Current Temp: {results?.main?.temp} °F</p>
-            <p>Min Temp: {results?.main?.temp_min} °F</p>
-            <p>High Temp: {results?.main?.temp_max} °F</p>
+            <h2 className="temp_high">High Temp</h2>
+            <h1 className="temp">72<span id="F">&#8457;</span></h1>
+            <h2 className="temp_low">Temp low:</h2>
+            <h1 className="city">City:<i class="material-icons locationIcon">place</i> Raleigh, NC</h1>
+                  
             <div className="card-actions justify-end">
             </div>
         </div>
