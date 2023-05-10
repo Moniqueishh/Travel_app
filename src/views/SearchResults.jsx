@@ -51,7 +51,7 @@ function App() {
 
 
 </div> 
-<div className="divider lg:divider-horizontal">OR</div> 
+<div className="divider lg:divider-horizontal">& </div> 
 <div className="grid flex-grow h-32 card  rounded-box place-items-center">
 
 {/* Beginning of second card  */}

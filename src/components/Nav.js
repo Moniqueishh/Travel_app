@@ -27,6 +27,11 @@ const Avatar = ({ user, logout }) => {
           </a>
         </li>
         <li>
+          <a href='/packinglist' className="justify-between">
+            My Packing List 🧳
+          </a>
+        </li>
+        <li>
           <button onClick={logout}>Sign out !</button>
         </li>
       </ul>

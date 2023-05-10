@@ -14,6 +14,7 @@ import SearchPage from "./views/SearchPage";
 import WeatherApi from "./views/WeatherApi";
 import CityComponent from "./views/CityComponent";
 import WeatherComponent from "./views/WeatherComponent";
+import PackingList from "./views/PackingList";
 
 
 
@@ -38,6 +39,7 @@ function App() {
         <Route children path='/weatherapi' element={<WeatherApi />} />
         <Route children path='/weathercomponent' element={<WeatherComponent />} />
         <Route children path='/citycomponent' element={<CityComponent />} />
+        <Route children path='/packinglist' element={<PackingList />} />
       </Routes>
       <Footer />
     </div>
