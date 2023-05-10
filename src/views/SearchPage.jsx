@@ -35,6 +35,8 @@ const SearchPage = (props) =>{
   
         }
 
+        
+
 
 
     
@@ -92,7 +94,7 @@ const SearchPage = (props) =>{
     Anakin
     <time className="text-xs opacity-50">  12:46</time>
   </div>
-  <div className="chat-bubble">I'm in! Lets check Monique's Travel app! ⚫🤖⚔️</div>
+  <div className="chat-bubble">I'm in, but Portland also sounds fun..<br/> Lets check Monique's Travel app! ⚫🤖⚔️</div>
   <div className="chat-footer opacity-50">
     Seen at 12:46
   </div>

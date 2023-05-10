@@ -15,7 +15,7 @@ return (
         
         <div className="flex flex-col w-full lg:flex-row">
 <div className="grid flex-grow h-32 place-items-center">
-        <h1 class="text-3xl">My Saves 🤍</h1>
+        <h1 class="text-3xl">Saved Places 🤍</h1>
                 </div>
             </div>
             {/* <Button variant="danger" onClick={clearTrip}>Clear Trips</Button> */}

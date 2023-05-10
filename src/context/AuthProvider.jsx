@@ -17,15 +17,9 @@ export const AuthProvider = ({ children }) => {
 
   async function postLogin(user) {
     const body = {
-      username: user.username,
-      name : user.displayname,
-      img: user.photoURL,
-      email : user.email,
-      password: user.password
-      // self.username = username
-      // self.email = email
-      // self.password = generate_password_hash(password)
-      // self.img = img
+      uid: user.uid,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
     };
 
     const headers = {
@@ -64,7 +58,8 @@ export const AuthProvider = ({ children }) => {
     onAuthStateChanged(auth, (userInfo) => {
       if (userInfo) {
         setUser({
-          username: userInfo.username,
+          uid: userInfo.uid,
+          displayName: userInfo.displayName,
           photoURL: userInfo.photoURL,
           loggedIn: true,
         });

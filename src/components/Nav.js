@@ -23,7 +23,7 @@ const Avatar = ({ user, logout }) => {
       >
         <li>
           <a href="/savedtrips" className="justify-between">
-            My Saves 🤍
+            Saved Places 🤍
           </a>
         </li>
         <li>
@@ -44,7 +44,7 @@ const Nav = () => {
   return (
     <div className="navbar bg-base-100 shadow-md">
       <div className="flex-1">
-        <a href="/" className="btn btn-ghost normal-case text-xl">
+        <a href="/" className="btn btn-ghost normal-case text-xl text-pink-300">
           ✈️ Cool Travel Name ✈️
         </a>
 
