@@ -1,5 +1,30 @@
+// import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import Axios from "axios";
+import CityComponent from "./CityComponent"
+import WeatherComponent from "./WeatherComponent"
+// import { useNavigate } from "react-router-dom";
 
-const SearchPage = () =>{
+
+const SearchPage = (props) =>{
+
+    const [city, updateCity] = useState();
+    const [weather, updateWeather] = useState();
+    const fetchWeather = async (e) => {
+      e.preventDefault();
+      const response = await Axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?units=imperial&q=${city}&appid=dc3ef453ab3d9fcae3c05cb7809a765b`,
+      );
+      updateWeather(response.data);
+
+      }
+    // let navigate = useNavigate(); 
+    // const routeChange = () =>{ 
+    //   let path ='/results'; 
+    //   navigate(path);
+    // }
+
+    
     return(
 <div>
 <div className="flex flex-col w-full lg:flex-row mt-16 mb-24">
@@ -52,10 +77,13 @@ const SearchPage = () =>{
   </div>
 </div>
 
-        <div className ="mt-20 pb-2 search">
+        <div onSubmit={fetchWeather} className ="mt-20 pb-2 search">
             <form action="">
-        <input type="search required" placeholder="Enter City Here!" className="input input-bordered input-secondary max-w-xs pb-1"/>
-        <button className="btn btn-secondary ml-2 pt-4 pb-6">Search</button>
+            {city && weather ? (
+          <WeatherComponent weather={weather} city={city} />
+        ) : (
+          <CityComponent updateCity={updateCity} fetchWeather={fetchWeather} />
+        )}
         </form>
         </div>
 </div>

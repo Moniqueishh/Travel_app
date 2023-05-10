@@ -11,12 +11,17 @@ import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import { useState } from "react";
 import SearchPage from "./views/SearchPage";
+import WeatherApi from "./views/WeatherApi";
+import CityComponent from "./views/CityComponent";
+import WeatherComponent from "./views/WeatherComponent";
+
 
 
 
 function App() {
 
   const [results, setResults] = useState([]);
+  
 
   return (
     <div className="App">
@@ -29,6 +34,9 @@ function App() {
         <Route children path='/results' element={<SearchResults results={results}/>} />
         <Route children path='/savedtrips' element={<SavedTrips />} />
         <Route children path='/searchpage' element={<SearchPage />} />
+        <Route children path='/weatherapi' element={<WeatherApi />} />
+        <Route children path='/weathercomponent' element={<WeatherComponent />} />
+        <Route children path='/citycomponent' element={<CityComponent />} />
       </Routes>
       <Footer />
     </div>

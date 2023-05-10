@@ -1,49 +1,75 @@
-// import { useEffect, useState } from "react";
-// import {SearchBar} from "../components/SearchBar"
+import React, { useState } from "react";
+import Axios from "axios";
+import CityComponent from "./CityComponent"
+import WeatherComponent from "./WeatherComponent"
 
-const SearchResults = ({results}) =>{
-  console.log(results)
+
+function App() {
+    const [city, updateCity] = useState();
+    const [weather, updateWeather] = useState();
+    const fetchWeather = async (e) => {
+      e.preventDefault();
+      const response = await Axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?units=imperial&q=${city}&appid=dc3ef453ab3d9fcae3c05cb7809a765b`,
+      );
+      updateWeather(response.data);
+    };
     return (
-        <div className="results-list">
-<div>{results}</div>
+        <>
 
-              <div className="flex flex-col w-full lg:flex-row">
-<div className="grid flex-grow h-32 place-items-center">
-        <h1>{results}</h1>
-                </div>
-            </div>
-            {/* <Button variant="danger" onClick={clearTrip}>Clear Trips</Button> */}
-{/* Styling for cards */}
+<div className="flex flex-col w-full">
+  <div className="grid h-20 card rounded-box place-items-center mt-10 mb-5 ml-7 mr-7 text-5xl bg-secondary">{city}</div> 
+  <div className="divider"></div> 
+</div>
+        
+       
+     
 
-<div className="flex flex-col w-full lg:flex-row mt-6 mb-24">
-<div className="grid flex-grow h-32 place-items-center">
-    
-    {/* Actual card with info */}
+     
 
-    <div className="card w-96 bg-secondary text-primary-content weather">
-        <div className="card-body content">
-            <h2 className="card-title">Weather for {results}</h2>
-            {/* <p>{results?.name} </p> */}
-            <h2 className="temp_high">High Temp</h2>
-            <h1 className="temp">72<span id="F">&#8457;</span></h1>
-            <h2 className="temp_low">Temp low:</h2>
-            <h1 className="city">City:<i class="material-icons locationIcon">place</i> Raleigh, NC</h1>
-                  
-            <div className="card-actions justify-end">
-            </div>
-        </div>
-        </div>
-    
-    </div> 
-    
-<div className="divider lg:divider-horizontal"></div> 
+<div className="flex flex-col w-full lg:flex-row mb-32 mt-24">
+<div className="grid flex-grow h-32 card  rounded-box place-items-center">
 
+<div className="card w-96 bg-base-100 shadow-xl image-full ">
+<figure><img src="/" alt="" /></figure>
+<div className="card-body">
+    <h1>{city} Weather Details</h1>
+    <h2 className="card-title">
+    {city && weather ? (
+          <WeatherComponent weather={weather} city={city} />
+        ) : (
+          <CityComponent updateCity={updateCity} fetchWeather={fetchWeather} />
+        )}
+
+    </h2>
+    {/* <p>If a dog chews shoes whose shoes does he choose?</p> */}
+    <div className="card-actions justify-end">
+    </div>
+</div>
 </div>
 
 
-        </div>
-      );
-    
-}
+</div> 
+<div className="divider lg:divider-horizontal">OR</div> 
+<div className="grid flex-grow h-32 card  rounded-box place-items-center">
 
-export default SearchResults;
+{/* Beginning of second card  */}
+<div className="card w-96 bg-base-100 shadow-xl image-full">
+<figure><img src="/" alt="" /></figure>
+<div className="card-body">
+    <h2 className="card-title">Paris</h2>
+    {/* <p>If a dog chews shoes whose shoes does he choose?</p> */}
+    <div className="card-actions justify-end">
+
+    </div>
+</div>
+</div>
+{/* End of card */}
+
+</div>
+</div>
+</>
+    );
+  }
+  
+  export default App;
