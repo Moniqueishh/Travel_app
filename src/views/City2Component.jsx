@@ -4,16 +4,15 @@ import React from "react";
 const SearchBox = styled.form`
   display: flex;
 
-
 `;
 
 
-const CityComponent = (props) => {
-  const { updateCity, fetchWeather } = props;
+const City2Component = (props) => {
+  const { updateCity, fetchBrew } = props;
   return (
     <>
       
-      <SearchBox onSubmit={fetchWeather}>
+      <SearchBox onSubmit={fetchBrew}>
         <input
           onChange={(e) => updateCity(e.target.value)}
           placeholder="City" className="input input-bordered w-full max-w-xs"
@@ -23,4 +22,4 @@ const CityComponent = (props) => {
     </>
   );
 };
-export default CityComponent;
+export default City2Component;

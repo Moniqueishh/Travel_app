@@ -1,4 +1,4 @@
-import "./styles/globals.css"
+import "./style/globals.css"
 import { Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav';
 import Home from './views/Home';
@@ -14,6 +14,7 @@ import SearchPage from "./views/SearchPage";
 import WeatherApi from "./views/WeatherApi";
 import CityComponent from "./views/CityComponent";
 import WeatherComponent from "./views/WeatherComponent";
+
 
 
 

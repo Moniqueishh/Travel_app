@@ -23,11 +23,11 @@ const Avatar = ({ user, logout }) => {
       >
         <li>
           <a href="/savedtrips" className="justify-between">
-            My Saved Trips
+            My Saves 🤍
           </a>
         </li>
         <li>
-          <button onClick={logout}>Sign out</button>
+          <button onClick={logout}>Sign out !</button>
         </li>
       </ul>
     </div>

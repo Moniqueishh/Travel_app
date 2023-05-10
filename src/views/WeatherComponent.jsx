@@ -41,7 +41,7 @@ const WeatherComponent = (props) => {
             <WeatherContainer>
                 <Condition>
                     <span>{`${Math.round(weather?.main?.temp)}°F`}</span>
-                    {`    ${weather?.weather[0].description}`}
+                    {`    ${weather?.name}`}
                 </Condition>
            
             </WeatherContainer>
