@@ -63,8 +63,7 @@ const Nav = () => {
           <Avatar user={user} logout={logout} />
         ) : (
           <>
-          <button className="btn btn-primary mr-2" onClick={Register}>Register</button>
-          <button className="btn btn-primary" onClick={login}>Sign in</button>
+          <button className="btn btn-primary" onClick={login}>Register / Sign in</button>
 
                   </>
         )}

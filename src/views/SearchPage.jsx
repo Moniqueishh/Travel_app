@@ -35,7 +35,18 @@ const SearchPage = (props) =>{
   
         }
 
+
+        const fetchMusic = async (e) => {
+            e.preventDefault();
+            const response = await Axios.get(
+              `https://musicbrainz.org/ws/2`,
+            );
+            updateBrew(response.data);
+            console.log(response.data)
+      
+            }
         
+
 
 
 
